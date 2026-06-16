@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Website</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+
+body{
+  background:url('https://picsum.photos/1600/900') no-repeat center/cover;
+  color:white;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 50px;
+  background:rgba(0,0,0,0.7);
+}
+
+.logo{color:orange;font-size:28px;}
+
+nav ul{display:flex;list-style:none;}
+nav ul li{margin:0 15px;}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  position:relative;
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  background:orange;
+  bottom:-5px;
+  left:0;
+  transition:0.3s;
+}
+
+nav ul li a:hover::after{width:100%;}
+
+/* MAIN */
+.main{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:90vh;
+  padding:0 50px;
+}
+
+.content h1{font-size:45px;}
+.content span{color:orange;}
+
+.btn{
+  padding:10px 25px;
+  background:orange;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px orange;
+}
+
+/* LOGIN BOX */
+.login-box{
+  width:320px;
+  background:rgba(0,0,0,0.85);
+  padding:25px;
+  border-radius:10px;
+  transition:0.4s;
+}
+
+.login-box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px orange;
+}
+
+.tabs{
+  display:flex;
+  justify-content:space-around;
+  margin-bottom:15px;
+}
+
+.tabs span{
+  cursor:pointer;
+  padding-bottom:5px;
+}
+
+.active-tab{
+  border-bottom:2px solid orange;
+}
+
+/* INPUT */
+input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:none;
+  border-bottom:1px solid white;
+  background:transparent;
+  color:white;
+}
+
+input:focus{
+  outline:none;
+  border-bottom:1px solid orange;
+}
+
+/* BUTTON */
+.login-btn{
+  width:100%;
+  padding:10px;
+  background:orange;
+  border:none;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.login-btn:hover{
+  box-shadow:0 0 15px orange;
+}
+
+/* SECTIONS */
+section{
+  padding:80px;
+  background:#111;
+}
+
+/* PROJECTS */
+.projects{
+  display:flex;
+  gap:20px;
+}
+
+.project{
+  background:#222;
+  padding:20px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.project:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px orange;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">PraRoz</div>
+  <ul>
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#service">SERVICE</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+</nav>
+
+<div class="main" id="home">
+
+<div class="content">
+  <h1>Web Design & <br><span>Development</span></h1>
+  <p>Create modern websites with premium UI.</p>
+  <button class="btn">JOIN US</button>
+</div>
+
+<div class="login-box">
+
+<div class="tabs">
+  <span id="loginTab" class="active-tab" onclick="showLogin()">Login</span>
+  <span id="registerTab" onclick="showRegister()">Register</span>
+</div>
+
+<!-- LOGIN -->
+<div id="loginForm">
+  <input type="email" placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button class="login-btn">Login</button>
+</div>
+
+<!-- REGISTER -->
+<div id="registerForm" style="display:none;">
+  <input type="text" placeholder="Name">
+  <input type="email" placeholder="Email">
+  <input type="text" placeholder="Contact">
+  <input type="password" placeholder="Password">
+  <input type="password" placeholder="Confirm Password">
+  <button class="login-btn">Signup</button>
+</div>
+
+</div>
+
+</div>
+
+<section id="about">
+  <h2>About</h2>
+  <p>I am a passionate web developer creating modern UI websites.</p>
+</section>
+
+<section id="service">
+  <h2>Services</h2>
+  <p>Website Design, Frontend Development, UI/UX Design.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project">Portfolio Website</div>
+    <div class="project">Todo App</div>
+    <div class="project">Landing Page</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: example@gmail.com</p>
+</section>
+
+// smooth scroll
+<script>
+    // smooth scroll
+document.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+    .scrollIntoView({behavior:"smooth"});
+  });
+});
+
+// toggle forms
+function showLogin(){
+  loginForm.style.display="block";
+  registerForm.style.display="none";
+  loginTab.classList.add("active-tab");
+  registerTab.classList.remove("active-tab");
+}
+
+function showRegister(){
+  loginForm.style.display="none";
+  registerForm.style.display="block";
+  registerTab.classList.add("active-tab");
+  loginTab.classList.remove("active-tab");
+}
+
+// SIGNUP (save data)
+document.querySelector("#registerForm button").onclick = function(){
+  let name = document.querySelector("#registerForm input[placeholder='Name']").value;
+  let email = document.querySelector("#registerForm input[placeholder='Email']").value;
+  let contact = document.querySelector("#registerForm input[placeholder='Contact']").value;
+  let pass = document.querySelectorAll("#registerForm input")[3].value;
+  let confirm = document.querySelectorAll("#registerForm input")[4].value;
+
+  if(pass !== confirm){
+    alert("Password not match ❌");
+    return;
+  }
+
+  let user = {name,email,contact,pass};
+  localStorage.setItem("user", JSON.stringify(user));
+
+  alert("Signup successful ✅");
+  showLogin();
+}
+
+// LOGIN (check data)
+document.querySelector("#loginForm button").onclick = function(){
+  let email = document.querySelector("#loginForm input[type='email']").value;
+  let pass = document.querySelector("#loginForm input[type='password']").value;
+
+  let stored = JSON.parse(localStorage.getItem("user"));
+
+  if(stored && email === stored.email && pass === stored.pass){
+    alert("Login successful 🔥 Welcome " + stored.name);
+  } else {
+    alert("Invalid login ❌");
+  }
+}
+</script>
+
+
+<script>
+// smooth scroll
+document.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+    .scrollIntoView({behavior:"smooth"});
+  });
+});
+
+// toggle forms
+function showLogin(){
+  document.getElementById("loginForm").style.display="block";
+  document.getElementById("registerForm").style.display="none";
+  loginTab.classList.add("active-tab");
+  registerTab.classList.remove("active-tab");
+}
+
+function showRegister(){
+  document.getElementById("loginForm").style.display="none";
+  document.getElementById("registerForm").style.display="block";
+  registerTab.classList.add("active-tab");
+  loginTab.classList.remove("active-tab");
+}
+</script>
+
+}
+</body>
+</html>
